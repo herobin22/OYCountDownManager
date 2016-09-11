@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "Model.h"
 #import "TableViewCell.h"
-#import "CountDownManager.h"
+#import "OYCountDownManager.h"
 
 @interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
 

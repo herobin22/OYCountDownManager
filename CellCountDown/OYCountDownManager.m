@@ -6,21 +6,21 @@
 //  Copyright © 2016年 herobin. All rights reserved.
 //
 
-#import "CountDownManager.h"
+#import "OYCountDownManager.h"
 
-@interface CountDownManager ()
+@interface OYCountDownManager ()
 
 @property (nonatomic, strong) NSTimer *timer;
 
 @end
 
-@implementation CountDownManager
+@implementation OYCountDownManager
 
 + (instancetype)manager {
-    static CountDownManager *manager = nil;
+    static OYCountDownManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        manager = [[CountDownManager alloc]init];
+        manager = [[OYCountDownManager alloc]init];
     });
     return manager;
 }

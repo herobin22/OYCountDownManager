@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 /// 使用单例
-#define kCountDownManager [CountDownManager manager]
+#define kCountDownManager [OYCountDownManager manager]
 /// 倒计时的通知
 #define kCountDownNotification @"CountDownNotification"
 
-@interface CountDownManager : NSObject
+@interface OYCountDownManager : NSObject
 
 /// 时间差(单位:秒)
 @property (nonatomic, assign) NSInteger timeInterval;

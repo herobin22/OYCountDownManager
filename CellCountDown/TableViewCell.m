@@ -7,7 +7,7 @@
 //
 
 #import "TableViewCell.h"
-#import "CountDownManager.h"
+#import "OYCountDownManager.h"
 #import "Model.h"
 
 @interface TableViewCell ()
@@ -67,6 +67,10 @@
     self.titleLabel.text = model.title;
     // 手动调用通知的回调
     [self countDownNotification];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 @end
