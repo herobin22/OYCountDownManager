@@ -23,10 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     // 启动倒计时管理
     [kCountDownManager start];
+    
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -45,6 +45,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
+}
+
+#pragma mark - 刷新数据
+- (void)reloadData {
+    // 网络加载数据
+    
+    // 调用[kCountDownManager reload]
+    [kCountDownManager reload];
+    // 刷新
+    [self.tableView reloadData];
 }
 
 - (NSArray *)dataSource {

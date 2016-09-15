@@ -46,7 +46,7 @@
         return;
     }
     
-    /// 计算首页倒计时
+    /// 计算倒计时
     NSInteger countDown = [self.model.count integerValue] - kCountDownManager.timeInterval;
     if (countDown < 0) return;
     /// 重新赋值
