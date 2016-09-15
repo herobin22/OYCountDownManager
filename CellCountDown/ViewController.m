@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
+@property (nonatomic, strong) NSArray *dataSource;
+
 @end
 
 @implementation ViewController
@@ -32,22 +34,33 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataSource.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"TableViewCell"];
-    // 模拟从服务器取得数据 -- 例如:服务器返回的数据为剩余时间数
-    NSInteger count = arc4random_uniform(10000+1); //生成0-1万之间的随机正整数
-    Model *model = [[Model alloc]init];
-    model.count = [NSString stringWithFormat: @"%zd", count];
-    model.title = [NSString stringWithFormat:@"第%zd条数据", indexPath.row];
     // 传递模型
-    cell.model = model;
+    cell.model = self.dataSource[indexPath.row];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
+}
+
+- (NSArray *)dataSource {
+    if (_dataSource == nil) {
+        NSMutableArray *arrM = [NSMutableArray array];
+        for (NSInteger i=0; i<50; i++) {
+            // 模拟从服务器取得数据 -- 例如:服务器返回的数据为剩余时间数
+            NSInteger count = arc4random_uniform(10000+1); //生成0-1万之间的随机正整数
+            Model *model = [[Model alloc]init];
+            model.count = [NSString stringWithFormat: @"%zd", count];
+            model.title = [NSString stringWithFormat:@"第%zd条数据", i];
+            [arrM addObject:model];
+        }
+        _dataSource = arrM.copy;
+    }
+    return _dataSource;
 }
 
 @end
