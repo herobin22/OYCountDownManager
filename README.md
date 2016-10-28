@@ -1,6 +1,7 @@
 # OYCountDownManager
 ##iOS在cell中使用倒计时的处理方法
-##效果图:![](https://github.com/herobin22/OYCountDownManager/raw/master/Untitled.gif)  
+##效果图:![](https://github.com/herobin22/OYCountDownManager/raw/master/Untitled.gif) 
+##有OC版及Swift版
 ##使用方法: 
 ###1. 导入"OYCountDownManager.h"
 ###2. 在第一次使用的地方调用[kCountDownManager start]
