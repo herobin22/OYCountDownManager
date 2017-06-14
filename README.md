@@ -12,13 +12,15 @@
         [kCountDownManager start];
     }
 ### 3. 在Cell中监听通知 kCountDownNotification
-  - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+```
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         // 监听通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countDownNotification) name:kCountDownNotification object:nil];
     }
     return self;
     }
+```
 ### 4. 在cell设置通知回调, 取得时间差, 根据时间差进行处理
      - (void)countDownNotification {
     /// 计算倒计时
