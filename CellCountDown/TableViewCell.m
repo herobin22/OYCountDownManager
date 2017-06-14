@@ -18,11 +18,8 @@
 @end
 
 @implementation TableViewCell
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         // 监听通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countDownNotification) name:kCountDownNotification object:nil];
     }
@@ -45,19 +42,17 @@
     if (0) {
         return;
     }
-    
     /// 计算倒计时
     NSInteger countDown = [self.model.count integerValue] - kCountDownManager.timeInterval;
-    if (countDown < 0) return;
+    /// 当倒计时到了进行回调
+    if (countDown <= 0) {
+        self.timeLabel.text = @"活动开始";
+        // 回调给控制器
+        !self.countDownZero ?: self.countDownZero();
+        return;
+    }
     /// 重新赋值
     self.timeLabel.text = [NSString stringWithFormat:@"倒计时%02zd:%02zd:%02zd", countDown/3600, (countDown/60)%60, countDown%60];
-    /// 当倒计时到了进行回调
-    if (countDown == 0) {
-        self.timeLabel.text = @"活动开始";
-        if (self.countDownZero) {
-            self.countDownZero();
-        }
-    }
 }
 
 ///  重写setter方法

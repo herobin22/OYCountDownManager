@@ -35,6 +35,12 @@
     _timeInterval = 0;
 }
 
+- (void)invalidate {
+    [self.timer invalidate];
+    self.timer = nil;
+    self.timeInterval = 0;
+}
+
 - (void)timerAction {
     // 时间差+1
     self.timeInterval ++;

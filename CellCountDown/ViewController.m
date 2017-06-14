@@ -27,6 +27,8 @@
     // 启动倒计时管理
     [kCountDownManager start];
     
+    self.tableView.refreshControl = [[UIRefreshControl alloc] init];
+    [self.tableView.refreshControl addTarget:self action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -50,11 +52,17 @@
 #pragma mark - 刷新数据
 - (void)reloadData {
     // 网络加载数据
+    self.dataSource = nil;
     
-    // 调用[kCountDownManager reload]
+    // 调用reload
     [kCountDownManager reload];
     // 刷新
     [self.tableView reloadData];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self.tableView.refreshControl endRefreshing];
+    });
 }
 
 - (NSArray *)dataSource {
@@ -62,7 +70,7 @@
         NSMutableArray *arrM = [NSMutableArray array];
         for (NSInteger i=0; i<50; i++) {
             // 模拟从服务器取得数据 -- 例如:服务器返回的数据为剩余时间数
-            NSInteger count = arc4random_uniform(10000+1); //生成0-1万之间的随机正整数
+            NSInteger count = arc4random_uniform(100); //生成0-1万之间的随机正整数
             Model *model = [[Model alloc]init];
             model.count = [NSString stringWithFormat: @"%zd", count];
             model.title = [NSString stringWithFormat:@"第%zd条数据", i];

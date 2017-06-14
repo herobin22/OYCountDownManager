@@ -23,5 +23,7 @@
 - (void)start;
 /// 刷新倒计时
 - (void)reload;
+/// 停止倒计时
+- (void)invalidate;
 
 @end
