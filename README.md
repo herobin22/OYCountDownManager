@@ -30,7 +30,7 @@
           xxxx(使用代理或block)
     }return;
     /// 重新赋值
-    self.timeLabel.text = [NSString stringWithFormat:@"倒计时%02zd:%02zd:%02zd", countDown/3600,       (countDown/60)%60, countDown%60];
+    self.timeLabel.text = [NSString stringWithFormat:@"倒计时%02zd:%02zd:%02zd", countDown/3600, (countDown/60)%60, countDown%60];
 }
 ### 5. 当刷新数据时,调用[kCountDownManager reload]
     - (void)reloadData {
