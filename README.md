@@ -22,16 +22,18 @@
     }
 ```
 ### 4. 在cell设置通知回调, 取得时间差, 根据时间差进行处理
-     - (void)countDownNotification {
-    /// 计算倒计时
+```
+- (void)countDownNotification {
+    // 计算倒计时
     NSInteger countDown = [self.model.count integerValue] - kCountDownManager.timeInterval;
     if (countDown <= 0) {
           // 倒计时结束时回调
           xxxx(使用代理或block)
     }return;
-    /// 重新赋值
+    // 重新赋值
     self.timeLabel.text = [NSString stringWithFormat:@"倒计时%02zd:%02zd:%02zd", countDown/3600, (countDown/60)%60, countDown%60];
 }
+```
 ### 5. 当刷新数据时,调用[kCountDownManager reload]
     - (void)reloadData {
         // 网络加载数据
