@@ -11,10 +11,9 @@
 #import "OYTableViewCell.h"
 #import "OYCountDownManager.h"
 
-@interface OYSingleTableVC ()<UITableViewDataSource, UITableViewDelegate>
+@interface OYSingleTableVC () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
-
 @property (nonatomic, strong) NSArray *dataSource;
 
 @end
@@ -24,10 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 启动倒计时管理
-    [kCountDownManager start];
-    
     self.title = @"单个列表倒计时";
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
 }
 
@@ -44,8 +41,9 @@
     OYModel *model = self.dataSource[indexPath.row];
     cell.model = model;
     [cell setCountDownZero:^(OYModel *timeOutModel){
+        // 回调 
         if (!timeOutModel.timeOut) {
-            NSLog(@"%@--时间到了", timeOutModel.title);
+            NSLog(@"SingleTableVC--%@--时间到了", timeOutModel.title);
         }
         // 标志
         timeOutModel.timeOut = YES;
@@ -89,7 +87,7 @@
         NSMutableArray *arrM = [NSMutableArray array];
         for (NSInteger i=0; i<50; i++) {
             // 模拟从服务器取得数据 -- 例如:服务器返回的数据为剩余时间数
-            NSInteger count = arc4random_uniform(100); //生成0-1万之间的随机正整数
+            NSInteger count = arc4random_uniform(100); //生成0-100之间的随机正整数
             OYModel *model = [[OYModel alloc]init];
             model.count = count;
             model.title = [NSString stringWithFormat:@"第%zd条数据", i];

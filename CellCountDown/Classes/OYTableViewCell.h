@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class OYModel;
+#import "OYModel.h"
 extern NSString *const OYTableViewCellID;
 
 @interface OYTableViewCell : UITableViewCell

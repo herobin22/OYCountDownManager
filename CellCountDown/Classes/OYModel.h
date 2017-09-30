@@ -16,4 +16,7 @@
 /// 表示时间已经到了
 @property (nonatomic, assign) BOOL timeOut;
 
+/// 倒计时源
+@property (nonatomic, copy) NSString *countDownSource;
+
 @end

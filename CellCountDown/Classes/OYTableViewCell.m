@@ -45,7 +45,13 @@ NSString *const OYTableViewCellID = @"OYTableViewCell";
     }
     /// 计算倒计时
     OYModel *model = self.model;
-    NSInteger countDown = model.count - kCountDownManager.timeInterval;
+    NSInteger timeInterval;
+    if (model.countDownSource) {
+        timeInterval = [kCountDownManager timeIntervalWithIdentifier:model.countDownSource];
+    }else {
+        timeInterval = kCountDownManager.timeInterval;
+    }
+    NSInteger countDown = model.count - timeInterval;
     /// 当倒计时到了进行回调
     if (countDown <= 0) {
         self.detailTextLabel.text = @"活动开始";

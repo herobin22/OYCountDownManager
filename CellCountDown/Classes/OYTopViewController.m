@@ -8,6 +8,9 @@
 
 #import "OYTopViewController.h"
 #import "OYSingleTableVC.h"
+#import "OYMultipleTableVC.h"
+#import "OYPagingTableVC.h"
+#import "OYCountDownManager.h"
 
 @interface OYTopViewController ()
 
@@ -19,11 +22,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"首页";
+    
+    // 启动倒计时管理
+    [kCountDownManager start];
 }
 
 - (IBAction)singleTableBtnClick:(id)sender {
     [self.navigationController pushViewController:[OYSingleTableVC new] animated:YES];
 }
 
+- (IBAction)mutipleTableBtnClick:(id)sender {
+    [self.navigationController pushViewController:[OYMultipleTableVC new] animated:YES];
+}
+
+- (IBAction)pagingTableBtnClick:(id)sender {
+    [self.navigationController pushViewController:[OYPagingTableVC new] animated:YES];
+}
 
 @end
