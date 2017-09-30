@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  Model.m
 //  CellCountDown
 //
 //  Created by herobin on 16/9/11.
 //  Copyright © 2016年 herobin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OYModel.h"
 
-@interface ViewController : UIViewController
-
+@implementation OYModel
 
 @end
-

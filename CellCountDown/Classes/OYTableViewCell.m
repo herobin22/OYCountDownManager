@@ -6,26 +6,27 @@
 //  Copyright © 2016年 herobin. All rights reserved.
 //
 
-#import "TableViewCell.h"
+#import "OYTableViewCell.h"
 #import "OYCountDownManager.h"
-#import "Model.h"
+#import "OYModel.h"
+NSString *const OYTableViewCellID = @"OYTableViewCell";
 
-@interface TableViewCell ()
-
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@interface OYTableViewCell ()
 
 @end
 
-@implementation TableViewCell
+@implementation OYTableViewCell
+
+// 代码创建
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+    if (self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier]) {
         // 监听通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countDownNotification) name:kCountDownNotification object:nil];
     }
     return self;
 }
 
+// xib创建
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
@@ -43,24 +44,27 @@
         return;
     }
     /// 计算倒计时
-    NSInteger countDown = [self.model.count integerValue] - kCountDownManager.timeInterval;
+    OYModel *model = self.model;
+    NSInteger countDown = model.count - kCountDownManager.timeInterval;
     /// 当倒计时到了进行回调
     if (countDown <= 0) {
-        self.timeLabel.text = @"活动开始";
+        self.detailTextLabel.text = @"活动开始";
         // 回调给控制器
-        !self.countDownZero ?: self.countDownZero();
+        if (self.countDownZero) {
+            self.countDownZero(model);
+        }
         return;
     }
     /// 重新赋值
-    self.timeLabel.text = [NSString stringWithFormat:@"倒计时%02zd:%02zd:%02zd", countDown/3600, (countDown/60)%60, countDown%60];
+    self.detailTextLabel.text = [NSString stringWithFormat:@"倒计时%02zd:%02zd:%02zd", countDown/3600, (countDown/60)%60, countDown%60];
 }
 
 ///  重写setter方法
-- (void)setModel:(Model *)model {
+- (void)setModel:(OYModel *)model {
     _model = model;
     
-    self.titleLabel.text = model.title;
-    // 手动调用通知的回调
+    self.textLabel.text = model.title;
+    // 手动刷新数据
     [self countDownNotification];
 }
 

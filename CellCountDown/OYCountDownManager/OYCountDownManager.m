@@ -44,7 +44,7 @@
 - (void)timerAction {
     // 时间差+1
     self.timeInterval ++;
-    // 发出通知--可以将时间差传递出去,或者直接通知类属性取
+    // 发出通知--可以将时间差传递出去,或者直接通过单例属性取
     [[NSNotificationCenter defaultCenter] postNotificationName:kCountDownNotification object:nil userInfo:@{@"TimeInterval" : @(self.timeInterval)}];
 }
 

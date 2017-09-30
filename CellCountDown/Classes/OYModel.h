@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Model : NSObject
+@interface OYModel : NSObject
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *count;
+@property (nonatomic, assign) NSInteger count;
+
+/// 表示时间已经到了
+@property (nonatomic, assign) BOOL timeOut;
 
 @end
