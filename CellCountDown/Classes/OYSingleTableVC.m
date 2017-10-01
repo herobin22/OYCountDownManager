@@ -26,6 +26,9 @@
     self.title = @"单个列表倒计时";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
+    
+    // 启动倒计时管理
+    [kCountDownManager start];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -96,6 +99,10 @@
         _dataSource = arrM.copy;
     }
     return _dataSource;
+}
+
+- (void)dealloc {
+    [kCountDownManager invalidate];
 }
 
 @end

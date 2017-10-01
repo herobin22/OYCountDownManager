@@ -32,6 +32,8 @@ NSString *const OYMulitpleSource2 = @"OYMulitpleSource2";
 
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.tableView2];
+    // 启动倒计时管理
+    [kCountDownManager start];
     // 增加倒计时源
     [kCountDownManager addSourceWithIdentifier:OYMulitpleSource1];
     [kCountDownManager addSourceWithIdentifier:OYMulitpleSource2];
@@ -159,6 +161,7 @@ NSString *const OYMulitpleSource2 = @"OYMulitpleSource2";
 
 - (void)dealloc {
     [kCountDownManager removeAllSource];
+    [kCountDownManager invalidate];
 }
 
 @end

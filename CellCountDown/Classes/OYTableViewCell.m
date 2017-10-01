@@ -21,7 +21,7 @@ NSString *const OYTableViewCellID = @"OYTableViewCell";
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier]) {
         // 监听通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countDownNotification) name:kCountDownNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countDownNotification) name:OYCountDownNotification object:nil];
     }
     return self;
 }
@@ -32,7 +32,7 @@ NSString *const OYTableViewCellID = @"OYTableViewCell";
     self = [super initWithCoder:coder];
     if (self) {
         // 监听通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countDownNotification) name:kCountDownNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countDownNotification) name:OYCountDownNotification object:nil];
     }
     return self;
 }

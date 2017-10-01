@@ -10,7 +10,7 @@
 /** 宏: 使用单例 */
 #define kCountDownManager [OYCountDownManager manager]
 /** 倒计时的通知名 */
-#define kCountDownNotification @"CountDownNotification"
+extern NSString *const OYCountDownNotification;
 
 @interface OYCountDownManager : NSObject
 
@@ -27,6 +27,7 @@
 
 // ======== v1.0 ========
 // 如果只需要一个倒计时差, 可继续使用timeInterval属性
+// 增加后台模式, 后台状态下会继续计算时间差
 
 /** 时间差(单位:秒) */
 @property (nonatomic, assign) NSInteger timeInterval;

@@ -30,6 +30,9 @@
     [self.view addSubview:self.tableView];
     
     [self setupRefresh];
+    
+    // 启动倒计时管理
+    [kCountDownManager start];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -131,6 +134,7 @@
 
 - (void)dealloc {
     [kCountDownManager removeAllSource];
+    [kCountDownManager invalidate];
 }
 
 @end

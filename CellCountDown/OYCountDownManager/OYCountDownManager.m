@@ -7,7 +7,7 @@
 //
 
 #import "OYCountDownManager.h"
-
+#import <UIKit/UIKit.h>
 
 @interface OYTimeInterval ()
 
@@ -26,6 +26,10 @@
 /// 时间差字典(单位:秒)(使用字典来存放, 支持多列表或多页面使用)
 @property (nonatomic, strong) NSMutableDictionary<NSString *, OYTimeInterval *> *timeIntervalDict;
 
+/// 后台模式使用, 记录进入后台的本地时间
+@property (nonatomic, assign) BOOL backgroudRecord;
+@property (nonatomic, strong) NSDate *lastDate;
+
 @end
 
 @implementation OYCountDownManager
@@ -37,6 +41,17 @@
         manager = [[OYCountDownManager alloc]init];
     });
     return manager;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        // 监听进入前台与进入后台的通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackgroundNotification) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForegroundNotification) name:UIApplicationWillEnterForegroundNotification object:nil];
+    }
+    return self;
 }
 
 - (void)start {
@@ -52,17 +67,21 @@
 - (void)invalidate {
     [self.timer invalidate];
     self.timer = nil;
-    self.timeInterval = 0;
 }
 
 - (void)timerAction {
-    // 时间差+1
-    self.timeInterval ++;
+    // 定时器每次加1
+    [self timerActionWithTimeInterval:1];
+}
+
+- (void)timerActionWithTimeInterval:(NSInteger)timeInterval {
+    // 时间差+
+    self.timeInterval += timeInterval;
     [self.timeIntervalDict enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, OYTimeInterval * _Nonnull obj, BOOL * _Nonnull stop) {
-        obj.timeInterval ++;
+        obj.timeInterval += timeInterval;
     }];
     // 发出通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:kCountDownNotification object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OYCountDownNotification object:nil userInfo:nil];
 }
 
 - (void)addSourceWithIdentifier:(NSString *)identifier {
@@ -96,6 +115,23 @@
     [self.timeIntervalDict removeAllObjects];
 }
 
+- (void)applicationDidEnterBackgroundNotification {
+    self.backgroudRecord = _timer;
+    if (self.backgroudRecord) {
+        self.lastDate = [NSDate date];
+        [self invalidate];
+    }
+}
+
+- (void)applicationWillEnterForegroundNotification {
+    if (self.backgroudRecord) {
+        NSTimeInterval timeInterval =  [[NSDate date] timeIntervalSinceDate:self.lastDate];
+        // 取整
+        [self timerActionWithTimeInterval:(NSInteger)timeInterval];
+        [self start];
+    }
+}
+
 - (NSTimer *)timer {
     if (_timer == nil) {
         _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
@@ -110,6 +146,8 @@
     }
     return _timeIntervalDict;
 }
+
+NSString *const OYCountDownNotification = @"OYCountDownNotification";
 
 @end
 
