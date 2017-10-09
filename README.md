@@ -1,7 +1,11 @@
 ## 一.OYCountDownManager描述
-iOS在cell中使用倒计时的处理方法, 全局使用一个NSTimer对象, 支持单列表.多列表.多页面.分页列表使用
-
-![单个列表倒计时.gif](http://upload-images.jianshu.io/upload_images/1646270-9c31e2300b17903d.gif?imageMogr2/auto-orient/strip)![多个列表倒计时.gif](http://upload-images.jianshu.io/upload_images/1646270-1aeb8d0096ed02c9.gif?imageMogr2/auto-orient/strip)![多个页面倒计时.gif](http://upload-images.jianshu.io/upload_images/1646270-215ec89ec4db5042.gif?imageMogr2/auto-orient/strip)![分页列表倒计时.gif](http://upload-images.jianshu.io/upload_images/1646270-2006d5c20996175b.gif?imageMogr2/auto-orient/strip)
+iOS在cell中使用倒计时的处理方法, 全局使用一个NSTimer对象
+* 单个列表倒计时
+* 多个列表倒计时
+* 多个页面倒计时
+* 分页列表倒计时
+* 后台模式倒计时
+![单个列表倒计时.gif](https://github.com/herobin22/OYCountDownManager/raw/master/single.gif)![多个列表倒计时.gif](http://upload-images.jianshu.io/upload_images/1646270-1aeb8d0096ed02c9.gif?imageMogr2/auto-orient/strip)![多个页面倒计时.gif](http://upload-images.jianshu.io/upload_images/1646270-215ec89ec4db5042.gif?imageMogr2/auto-orient/strip)![分页列表倒计时.gif](http://upload-images.jianshu.io/upload_images/1646270-2006d5c20996175b.gif?imageMogr2/auto-orient/strip)
 
 ## 使用方法: 
 ### 1. 导入"OYCountDownManager.h"
