@@ -1,34 +1,37 @@
 //
-//  ViewController.m
+//  OYMultipPageTwoVC.m
 //  CellCountDown
 //
-//  Created by herobin on 16/9/11.
-//  Copyright © 2016年 herobin. All rights reserved.
+//  Created by Gold on 2017/10/9.
+//  Copyright © 2017年 herobin. All rights reserved.
 //
 
-#import "OYSingleTableVC.h"
-#import "OYModel.h"
+#import "OYMultiplePageTwoVC.h"
 #import "OYTableViewCell.h"
-#import "OYCountDownManager.h"
+#import <OYCountDownManager.h>
 
-@interface OYSingleTableVC () <UITableViewDataSource, UITableViewDelegate>
+NSString *const OYMultiplePageSource2 = @"OYMultiplePageSource2";
+
+@interface OYMultiplePageTwoVC () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataSource;
 
 @end
 
-@implementation OYSingleTableVC
+@implementation OYMultiplePageTwoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"单个列表倒计时";
+    self.tabBarController.title = @"页面2倒计时";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
     
     // 启动倒计时管理
     [kCountDownManager start];
+    // 增加倒计时源
+    [kCountDownManager addSourceWithIdentifier:OYMultiplePageSource2];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -44,9 +47,9 @@
     OYModel *model = self.dataSource[indexPath.row];
     cell.model = model;
     [cell setCountDownZero:^(OYModel *timeOutModel){
-        // 回调 
+        // 回调
         if (!timeOutModel.timeOut) {
-            NSLog(@"SingleTableVC--%@--时间到了", timeOutModel.title);
+            NSLog(@"MultiplePageTwoVC--%@--时间到了", timeOutModel.title);
         }
         // 标志
         timeOutModel.timeOut = YES;
@@ -64,7 +67,7 @@
         // 模拟网络请求
         self.dataSource = nil;
         // 调用reload
-        [kCountDownManager reload];
+        [kCountDownManager reloadSourceWithIdentifier:OYMultiplePageSource2];
         // 刷新
         [self.tableView reloadData];
         // 停止刷新
@@ -94,6 +97,7 @@
             OYModel *model = [[OYModel alloc]init];
             model.count = count;
             model.title = [NSString stringWithFormat:@"第%zd条数据", i];
+            model.countDownSource = OYMultiplePageSource2;
             [arrM addObject:model];
         }
         _dataSource = arrM.copy;
@@ -104,8 +108,7 @@
 - (void)dealloc {
     // 废除定时器
     [kCountDownManager invalidate];
-    // 清空时间差
-    [kCountDownManager reload];
 }
+
 
 @end

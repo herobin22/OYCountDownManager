@@ -10,8 +10,8 @@
 #import "OYTableViewCell.h"
 #import "OYCountDownManager.h"
 
-NSString *const OYMulitpleSource1 = @"OYMulitpleSource1";
-NSString *const OYMulitpleSource2 = @"OYMulitpleSource2";
+NSString *const OYMultipleTableSource1 = @"OYMultipleTableSource1";
+NSString *const OYMultipleTableSource2 = @"OYMultipleTableSource2";
 
 @interface OYMultipleTableVC () <UITableViewDelegate, UITableViewDataSource>
 
@@ -27,7 +27,7 @@ NSString *const OYMulitpleSource2 = @"OYMulitpleSource2";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"多个列表/页面倒计时";
+    self.title = @"多个列表倒计时";
     self.view.backgroundColor = [UIColor grayColor];
 
     [self.view addSubview:self.tableView];
@@ -35,8 +35,8 @@ NSString *const OYMulitpleSource2 = @"OYMulitpleSource2";
     // 启动倒计时管理
     [kCountDownManager start];
     // 增加倒计时源
-    [kCountDownManager addSourceWithIdentifier:OYMulitpleSource1];
-    [kCountDownManager addSourceWithIdentifier:OYMulitpleSource2];
+    [kCountDownManager addSourceWithIdentifier:OYMultipleTableSource1];
+    [kCountDownManager addSourceWithIdentifier:OYMultipleTableSource2];
 }
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
@@ -78,7 +78,7 @@ NSString *const OYMulitpleSource2 = @"OYMulitpleSource2";
         // 模拟网络请求
         self.dataSource = nil;
         // 调用reload, 指定identifier
-        [kCountDownManager reloadSourceWithIdentifier:OYMulitpleSource1];
+        [kCountDownManager reloadSourceWithIdentifier:OYMultipleTableSource1];
         // 刷新
         [self.tableView reloadData];
         // 停止刷新
@@ -91,7 +91,7 @@ NSString *const OYMulitpleSource2 = @"OYMulitpleSource2";
         // 模拟网络请求
         self.dataSource2 = nil;
         // 调用reload, 指定identifier
-        [kCountDownManager reloadSourceWithIdentifier:OYMulitpleSource2];
+        [kCountDownManager reloadSourceWithIdentifier:OYMultipleTableSource2];
         // 刷新
         [self.tableView2 reloadData];
         // 停止刷新
@@ -121,7 +121,7 @@ NSString *const OYMulitpleSource2 = @"OYMulitpleSource2";
             OYModel *model = [[OYModel alloc]init];
             model.count = count;
             model.title = [NSString stringWithFormat:@"第%zd条数据", i];
-            model.countDownSource = OYMulitpleSource1;
+            model.countDownSource = OYMultipleTableSource1;
             [arrM addObject:model];
         }
         _dataSource = arrM.copy;
@@ -151,7 +151,7 @@ NSString *const OYMulitpleSource2 = @"OYMulitpleSource2";
             OYModel *model = [[OYModel alloc]init];
             model.count = count;
             model.title = [NSString stringWithFormat:@"第%zd条数据", i];
-            model.countDownSource = OYMulitpleSource2;
+            model.countDownSource = OYMultipleTableSource2;
             [arrM addObject:model];
         }
         _dataSource2 = arrM.copy;
