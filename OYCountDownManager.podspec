@@ -8,8 +8,8 @@ s.source      = { :git => 'https://github.com/herobin22/OYCountDownManager.git',
 s.license     = { :type => "MIT", :file => "LICENSE" }
 s.platform = :ios, '7.0'
 s.requires_arc = true
-s.source_files = 'OYCountDownManager/*.{h,m}'
+s.source_files = 'CellCountDown/OYCountDownManager/*.{h,m}'
 s.framework    = 'UIKit'
-s.dependency 'MJRefresh'
+s.dependency  'MJRefresh'
 
 end
