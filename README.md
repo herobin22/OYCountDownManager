@@ -187,8 +187,8 @@ NSString *const OYMultipleTableSource2 = @"OYMultipleTableSource2";
 
 
  
-> 如果还有不懂的问题, 或者出现其它bug
-请查看Demo: [Demo](https://github.com/herobin22/OYCountDownManager)
-简书地址:http://www.jianshu.com/p/af62a56ef7e2
-或者给我留言, 喜欢的话, 就给作者一个star
+* 如果还有不懂的问题, 或者出现其它bug
+* 请查看Demo: [Demo](https://github.com/herobin22/OYCountDownManager)
+* 简书地址:http://www.jianshu.com/p/af62a56ef7e2
+* 或者给我留言, 喜欢的话, 就给作者一个star
 
