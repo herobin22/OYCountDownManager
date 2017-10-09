@@ -1,6 +1,7 @@
 # OYCountDownManager
 ## iOS在cell中使用倒计时的处理方法, 全局使用一个NSTimer对象, 支持单列表.多列表.多页面.分页列表使用
-## 单个列表倒计时:![](https://github.com/herobin22/OYCountDownManager/raw/master/Source/single) 
+![单个列表倒计时](https://github.com/herobin22/OYCountDownManager/raw/master/Source/single.gif) 
+![多个列表倒计时](https://github.com/herobin22/OYCountDownManager/raw/master/Source/multipleTable.gif)
 ## 使用方法: 
 ### 1. 导入"OYCountDownManager.h"
 ### 2. 在第一次使用的地方调用[kCountDownManager start]
