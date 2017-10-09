@@ -186,57 +186,9 @@ NSString *const OYMultipleTableSource2 = @"OYMultipleTableSource2";
 查看定时器设置是否正确, 或者通知是否监听了两次
 
 
-
  
 > 如果还有不懂的问题, 或者出现其它bug
 请查看Demo: [Demo](https://github.com/herobin22/OYCountDownManager)
+简书地址:http://www.jianshu.com/p/af62a56ef7e2
 或者给我留言, 喜欢的话, 就给作者一个star
-## 使用方法: 
-### 1. 导入"OYCountDownManager.h"
-### 2. 在第一次使用的地方调用[kCountDownManager start]
-    - (void)viewDidLoad {
-        [super viewDidLoad];
-    
-        // 启动倒计时管理
-        [kCountDownManager start];
-    }
-### 3. 在Cell中监听通知 kCountDownNotification
-```
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        // 监听通知
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(countDownNotification) name:kCountDownNotification object:nil];
-    }
-    return self;
-    }
-```
-### 4. 在cell设置通知回调, 取得时间差, 根据时间差进行处理
-```
-- (void)countDownNotification {
-    // 计算倒计时
-    NSInteger countDown = [self.model.count integerValue] - kCountDownManager.timeInterval;
-    if (countDown <= 0) {
-          // 倒计时结束时回调
-          xxxx(使用代理或block)
-    }return;
-    // 重新赋值
-    self.timeLabel.text = [NSString stringWithFormat:@"倒计时%02zd:%02zd:%02zd", countDown/3600, (countDown/60)%60, countDown%60];
-}
-```
-### 5. 当刷新数据时,调用[kCountDownManager reload]
-    - (void)reloadData {
-        // 网络加载数据
-    
-        // 调用reload
-        [kCountDownManager reload];
-        // 刷新
-        [self.tableView reloadData];
-    }
-### 6. 当不需要倒计时时, 废除定时器
-```
-      [kCountDownManager invalidate];
-```
 
-
-## 简书地址:http://www.jianshu.com/p/af62a56ef7e2
-## 喜欢请Star一个
