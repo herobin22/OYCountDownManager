@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name        = 'OYCountDownManager'
-s.version     = '2.0'
+s.version     = '2.0.1'
 s.authors     = { 'herob' => '869765745@qq.com' }
 s.homepage    = 'https://github.com/herobin22/OYCountDownManager'
 s.summary     = 'iOS在cell中使用倒计时的处理方法'
@@ -8,8 +8,8 @@ s.source      = { :git => 'https://github.com/herobin22/OYCountDownManager.git',
 s.license     = { :type => "MIT", :file => "LICENSE" }
 s.platform = :ios, '7.0'
 s.requires_arc = true
-s.source_files = 'OYCountDownManager'
-s.public_header_files = 'OYCountDownManager/*.h'
+s.source_files = 'OYCountDownManager/*.{h,m}'
+s.framework    = 'UIKit'
+s.dependency 'MJRefresh'
 
-s.ios.deployment_target = '7.0'
 end
