@@ -43,8 +43,7 @@
     return manager;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         // 监听进入前台与进入后台的通知
