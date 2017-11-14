@@ -1,5 +1,6 @@
 ## 一.OYCountDownManager描述
 iOS在cell中使用倒计时的处理方法, 全局使用一个NSTimer对象
+
 Swift版本: [OYCountDownManager-Swift](https://github.com/herobin22/OYCountDownManager-Swift)
 * 单个列表倒计时
 * 多个列表倒计时
