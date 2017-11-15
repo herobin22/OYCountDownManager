@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A082DB61FBBEFC20023BF90 /* OYCountDownManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A082DB51FBBEFC20023BF90 /* OYCountDownManager.m */; };
 		6A6ECC441F8B4C18006AA322 /* OYTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D90001F8B464F0080EAAA /* OYTopViewController.m */; };
 		6A6ECC451F8B4C1C006AA322 /* OYSingleTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D8FFC1F8B464F0080EAAA /* OYSingleTableVC.m */; };
 		6A6ECC461F8B4C20006AA322 /* OYMultipleTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2D8FF81F8B464F0080EAAA /* OYMultipleTableVC.m */; };
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		08B892AE5C5905A2FAC6CCCE /* Pods-CellCountDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CellCountDown.release.xcconfig"; path = "Pods/Target Support Files/Pods-CellCountDown/Pods-CellCountDown.release.xcconfig"; sourceTree = "<group>"; };
 		5E56A79A6E1A6C5DD8BB06A2 /* libPods-CellCountDown.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CellCountDown.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A082DB41FBBEFC20023BF90 /* OYCountDownManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OYCountDownManager.h; sourceTree = "<group>"; };
+		6A082DB51FBBEFC20023BF90 /* OYCountDownManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OYCountDownManager.m; sourceTree = "<group>"; };
 		6A2D8FF51F8B464F0080EAAA /* OYModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OYModel.h; sourceTree = "<group>"; };
 		6A2D8FF61F8B464F0080EAAA /* OYModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OYModel.m; sourceTree = "<group>"; };
 		6A2D8FF71F8B464F0080EAAA /* OYMultipleTableVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OYMultipleTableVC.h; sourceTree = "<group>"; };
@@ -74,6 +77,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6A082DB31FBBEFC20023BF90 /* OYCountDownManager */ = {
+			isa = PBXGroup;
+			children = (
+				6A082DB41FBBEFC20023BF90 /* OYCountDownManager.h */,
+				6A082DB51FBBEFC20023BF90 /* OYCountDownManager.m */,
+			);
+			path = OYCountDownManager;
+			sourceTree = "<group>";
+		};
 		6A2D8FF41F8B464F0080EAAA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +132,7 @@
 			children = (
 				87492F4E1D85A5F90032D7FF /* AppDelegate.h */,
 				87492F4F1D85A5F90032D7FF /* AppDelegate.m */,
+				6A082DB31FBBEFC20023BF90 /* OYCountDownManager */,
 				6A2D8FF41F8B464F0080EAAA /* Classes */,
 				87492F541D85A5F90032D7FF /* Main.storyboard */,
 				87492F571D85A5F90032D7FF /* Assets.xcassets */,
@@ -277,6 +290,7 @@
 				6A6ECC521F8B5DF1006AA322 /* OYMultiplePageTwoVC.m in Sources */,
 				87492F501D85A5F90032D7FF /* AppDelegate.m in Sources */,
 				87492F4D1D85A5F90032D7FF /* main.m in Sources */,
+				6A082DB61FBBEFC20023BF90 /* OYCountDownManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

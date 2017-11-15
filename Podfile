@@ -7,6 +7,6 @@ target 'CellCountDown' do
 
   # Pods for CellCountDown
 
-pod 'OYCountDownManager'
+pod ‘MJRefresh’
 
 end

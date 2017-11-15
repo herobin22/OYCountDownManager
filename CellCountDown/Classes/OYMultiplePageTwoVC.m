@@ -8,7 +8,7 @@
 
 #import "OYMultiplePageTwoVC.h"
 #import "OYTableViewCell.h"
-#import <OYCountDownManager.h>
+#import "OYCountDownManager.h"
 
 NSString *const OYMultiplePageSource2 = @"OYMultiplePageSource2";
 
