@@ -115,7 +115,7 @@
 }
 
 - (void)applicationDidEnterBackgroundNotification {
-    self.backgroudRecord = _timer != nil;
+    self.backgroudRecord = (_timer != nil);
     if (self.backgroudRecord) {
         self.lastDate = [NSDate date];
         [self invalidate];
