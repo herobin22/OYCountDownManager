@@ -1,5 +1,7 @@
 ## 一.OYCountDownManager描述
 iOS在cell中使用倒计时的处理方法, 全局使用一个NSTimer对象
+
+Swift版本: [OYCountDownManager-Swift](https://github.com/herobin22/OYCountDownManager-Swift)
 * 单个列表倒计时
 * 多个列表倒计时
 * 多个页面倒计时
@@ -194,4 +196,3 @@ NSString *const OYMultipleTableSource2 = @"OYMultipleTableSource2";
 * 请查看Demo: [Demo](https://github.com/herobin22/OYCountDownManager)
 * 简书地址:http://www.jianshu.com/p/af62a56ef7e2
 * 或者给我留言, 喜欢的话, 就给作者一个star
-
