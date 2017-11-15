@@ -389,9 +389,11 @@
 			baseConfigurationReference = FE31B69A7C8446D6A10E6984 /* Pods-CellCountDown.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CellCountDown/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.herobin.ios.CellCountDown;
+				PRODUCT_BUNDLE_IDENTIFIER = com.herobin.iOS.CellCountDown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -401,9 +403,11 @@
 			baseConfigurationReference = 08B892AE5C5905A2FAC6CCCE /* Pods-CellCountDown.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CellCountDown/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.herobin.ios.CellCountDown;
+				PRODUCT_BUNDLE_IDENTIFIER = com.herobin.iOS.CellCountDown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
