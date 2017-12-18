@@ -106,7 +106,7 @@ NSString *const OYMultiplePageSource2 = @"OYMultiplePageSource2";
 }
 
 - (void)dealloc {
-    // 废除定时器
+    [kCountDownManager removeSourceWithIdentifier:OYMultiplePageSource2];
     [kCountDownManager invalidate];
 }
 
