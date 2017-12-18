@@ -156,8 +156,8 @@ NSString *const OYMultipleTableSource2 = @"OYMultipleTableSource2";
 ## 五.注意事项
  > #### 误差分析
  * NSTimer可以精确到50-100毫秒,不是绝对准确的,所以你使用时间累加的方法时间久了有可能成为时间误差的来源
-* 为秒为单位触发定时器, 当reloadData后, 定时器也许刚好到达触发点, 时间差+1, 数据刚reload完就马上-1秒 
-* 后台模式是以进入后台的本地时间, 及进入前台的本地时间做差值来计算的, 当用户手动修改本地时间, 也会成为时间差错误的来源之一, 如果能在进入前台的时间再从服务器取一次数据, 或者记录服务器时间而不是本地时间, 也可以避免这一误差
+* 以秒为单位触发定时器, 当reloadData后, 定时器也许刚好到达触发点, 时间差+1, 数据刚reload完就马上-1秒 
+* 后台模式是以进入后台的绝对时间, 及进入前台的绝对时间做差值来计算的, 差值会进行取整, 导致一点点误差
  
  > #### 滚动cell时出去文字闪烁
   在给cell的模型赋值后, 最好手动调用一下countDownNotification方法, 保证及时刷新 
@@ -192,7 +192,7 @@ NSString *const OYMultipleTableSource2 = @"OYMultipleTableSource2";
   
 
  
-* 如果还有不懂的问题, 或者出现其它bug
+* 还有不懂的问题, 或者出现其它bug
 * 请查看Demo: [Demo](https://github.com/herobin22/OYCountDownManager)
 * 简书地址:http://www.jianshu.com/p/af62a56ef7e2
 * 或者给我留言, 喜欢的话, 就给作者一个star
