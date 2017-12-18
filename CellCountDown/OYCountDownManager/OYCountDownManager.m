@@ -26,9 +26,9 @@
 /// 时间差字典(单位:秒)(使用字典来存放, 支持多列表或多页面使用)
 @property (nonatomic, strong) NSMutableDictionary<NSString *, OYTimeInterval *> *timeIntervalDict;
 
-/// 后台模式使用, 记录进入后台的本地时间
+/// 后台模式使用, 记录进入后台的绝对时间
 @property (nonatomic, assign) BOOL backgroudRecord;
-@property (nonatomic, strong) NSDate *lastDate;
+@property (nonatomic, assign) CFAbsoluteTime lastTime;
 
 @end
 
@@ -117,14 +117,14 @@
 - (void)applicationDidEnterBackgroundNotification {
     self.backgroudRecord = (_timer != nil);
     if (self.backgroudRecord) {
-        self.lastDate = [NSDate date];
+        self.lastTime = CFAbsoluteTimeGetCurrent();
         [self invalidate];
     }
 }
 
 - (void)applicationWillEnterForegroundNotification {
     if (self.backgroudRecord) {
-        NSTimeInterval timeInterval =  [[NSDate date] timeIntervalSinceDate:self.lastDate];
+        CFAbsoluteTime timeInterval = CFAbsoluteTimeGetCurrent() - self.lastTime;
         // 取整
         [self timerActionWithTimeInterval:(NSInteger)timeInterval];
         [self start];
