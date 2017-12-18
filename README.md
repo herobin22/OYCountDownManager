@@ -51,7 +51,8 @@ pod 'OYCountDownManager'
     if (countDown <= 0) {
           // 倒计时结束时回调
           xxxx(使用代理或block)
-    }return;
+          return;
+    }
     /// 重新赋值
     self.timeLabel.text = [NSString stringWithFormat:@"倒计时%02zd:%02zd:%02zd", countDown/3600,       (countDown/60)%60, countDown%60];
 }
