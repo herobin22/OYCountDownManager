@@ -186,8 +186,8 @@ NSString *const OYMultipleTableSource2 = @"OYMultipleTableSource2";
 
 
 > #### 出现每秒倒计时减2的问题
-查看定时器设置是否正确, 或者通知是否监听了两次
-
+1.查看定时器设置是否正确, 或者通知是否监听了两次
+2.在countDownNotification方法中, 是否用[NSDate date]做了某些计算, 因为[NSDate date]为当前时间, 每一秒去取都会比上一秒大一秒, 再加上timeInterval也是一秒加一, 那么就会出现每秒倒计时减2的问题
 
 
   
